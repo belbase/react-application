@@ -69,70 +69,68 @@ class Form extends React.Component {
     const { person, form } = this.state;
     return (
       <React.Fragment>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-12 col-md-6">
-              <form onSubmit={this.formSubmit.bind(this)}>
-                <div class="form-group">
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    className={
-                      form.name.status != false
-                        ? "form-control"
-                        : "form-control is-invalid"
-                    }
-                    name="name"
-                    id="name"
-                    onChange={this.inputChange.bind(this)}
-                    value={person.name}
-                    placeholder="Enter the Name"
-                  />
-                  <div className="invalid-feedback">{form.name.message}</div>
-                </div>
-                <div class="form-group">
-                  <label htmlFor="age">Age</label>
-                  <input
-                    type="number"
-                    className={
-                      form.age.status != false
-                        ? "form-control"
-                        : "form-control is-invalid"
-                    }
-                    name="age"
-                    id="age"
-                    onChange={this.inputChange.bind(this)}
-                    value={person.age}
-                    placeholder="Enter the Age"
-                  />
-                  <div className="invalid-feedback">{form.age.message}</div>
-                </div>
-                <div class="form-group">
-                  <label htmlFor="designation">Designation</label>
-                  <input
-                    type="text"
-                    className={
-                      form.designation.status != false
-                        ? "form-control"
-                        : "form-control is-invalid"
-                    }
-                    name="designation"
-                    id="designation"
-                    onChange={this.inputChange.bind(this)}
-                    value={person.designation}
-                    placeholder="Enter the Designation"
-                  />
-                </div>
-                <button
-                  className="btn btn-primary"
-                  type="submit"
-                  disabled={!form.status}
-                >
-                  Submit
-                </button>
-              </form>
+        <div className="col-12 col-md-6">
+          <form onSubmit={this.formSubmit.bind(this)}>
+            <div class="form-group">
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                className={
+                  form.name.status != false
+                    ? "form-control"
+                    : "form-control is-invalid"
+                }
+                name="name"
+                id="name"
+                onChange={this.inputChange.bind(this)}
+                value={person.name}
+                placeholder="Enter the Name"
+              />
+              <div className="invalid-feedback">{form.name.message}</div>
             </div>
-          </div>
+            <div class="form-group">
+              <label htmlFor="age">Age</label>
+              <input
+                type="number"
+                className={
+                  form.age.status != false
+                    ? "form-control"
+                    : "form-control is-invalid"
+                }
+                name="age"
+                id="age"
+                onChange={this.inputChange.bind(this)}
+                value={person.age}
+                placeholder="Enter the Age"
+              />
+              <div className="invalid-feedback">{form.age.message}</div>
+            </div>
+            <div class="form-group">
+              <label htmlFor="designation">Designation</label>
+              <input
+                type="text"
+                className={
+                  form.designation.status != false
+                    ? "form-control"
+                    : "form-control is-invalid"
+                }
+                name="designation"
+                id="designation"
+                onChange={this.inputChange.bind(this)}
+                value={person.designation}
+                placeholder="Enter the Designation"
+              />
+              <div className="invalid-feedback">{form.designation.message}</div>
+            </div>
+            <button
+              className="btn btn-primary"
+              type="submit"
+              disabled={!form.status}
+              title="Please Fill All the Field to Enable it"
+            >
+              Submit
+            </button>
+          </form>
         </div>
       </React.Fragment>
     );

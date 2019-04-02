@@ -26,12 +26,16 @@ class Appication extends React.Component {
     const { person } = this.state;
     return (
       <div className="App">
-        <Form onSubmitData={this.getData} />
-        <App>
-          My name is {person.name} <br />
-          My Age is {person.age} years old. <br />
-          My Designation is {person.designation}
-        </App>
+        <div className="container-fluid">
+          <div className="row">
+            <Form onSubmitData={this.getData} />
+            <App>
+              My name is {person.name} <br />
+              My Age is {person.age} years old. <br />
+              My Designation is {person.designation}
+            </App>
+          </div>
+        </div>
       </div>
     );
   }

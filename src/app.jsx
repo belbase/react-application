@@ -7,10 +7,12 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1>This is Heading</h1>
-        <p>
-          {this.props.children ? this.props.children : "This is the passage."}
-        </p>
+        <hr />
+        <div class="col-md-6 col-12">
+          <p>
+            {this.props.children ? this.props.children : "This is the passage."}
+          </p>
+        </div>
       </React.Fragment>
     );
   }
