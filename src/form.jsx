@@ -6,8 +6,23 @@ class Form extends React.Component {
     this.state = {
       person: {
         name: "",
-        age: 0,
+        age: "",
         designation: ""
+      },
+      form: {
+        name: {
+          status: null,
+          message: ""
+        },
+        age: {
+          status: null,
+          message: ""
+        },
+        designation: {
+          status: null,
+          message: ""
+        },
+        status: false
       }
     };
   }
@@ -23,9 +38,35 @@ class Form extends React.Component {
     const { person } = this.state;
     person[event.target.name] = event.target.value;
     this.setState(person);
+    this.formValidation(event.target.name, event.target.value);
+  }
+
+  formValidation(name, value) {
+    const { form } = this.state;
+    switch (name) {
+      case "name":
+        form.name.status = value.length > 3;
+        form.name.message = form.name.status
+          ? ""
+          : "The Name Should be atleast 3 Character Long";
+        break;
+      case "age":
+        form.age.status = value >= 18;
+        form.age.message = form.age.status ? "" : "Person Should be An Adult ";
+        break;
+      case "designation":
+        form.designation.status = value.length > 6;
+        form.designation.message = form.designation.status
+          ? ""
+          : "The Designation Should be atleast 6 Character Long";
+        break;
+    }
+    form.status =
+      form.name.status && form.age.status && form.designation.status;
+    this.setState({ form: form });
   }
   render() {
-    const person = this.state;
+    const { person, form } = this.state;
     return (
       <React.Fragment>
         <div className="container-fluid">
@@ -36,36 +77,57 @@ class Form extends React.Component {
                   <label htmlFor="name">Name</label>
                   <input
                     type="text"
-                    className="form-control"
+                    className={
+                      form.name.status != false
+                        ? "form-control"
+                        : "form-control is-invalid"
+                    }
                     name="name"
                     id="name"
                     onChange={this.inputChange.bind(this)}
                     value={person.name}
+                    placeholder="Enter the Name"
                   />
+                  <div className="invalid-feedback">{form.name.message}</div>
                 </div>
                 <div class="form-group">
-                  <label htmlFor="name">Age</label>
+                  <label htmlFor="age">Age</label>
                   <input
-                    type="text"
-                    className="form-control"
+                    type="number"
+                    className={
+                      form.age.status != false
+                        ? "form-control"
+                        : "form-control is-invalid"
+                    }
                     name="age"
                     id="age"
                     onChange={this.inputChange.bind(this)}
                     value={person.age}
+                    placeholder="Enter the Age"
                   />
+                  <div className="invalid-feedback">{form.age.message}</div>
                 </div>
                 <div class="form-group">
-                  <label htmlFor="name">Designamtion</label>
+                  <label htmlFor="designation">Designation</label>
                   <input
                     type="text"
-                    className="form-control"
+                    className={
+                      form.designation.status != false
+                        ? "form-control"
+                        : "form-control is-invalid"
+                    }
                     name="designation"
                     id="designation"
                     onChange={this.inputChange.bind(this)}
                     value={person.designation}
+                    placeholder="Enter the Designation"
                   />
                 </div>
-                <button className="btn btn-primary" type="submit">
+                <button
+                  className="btn btn-primary"
+                  type="submit"
+                  disabled={!form.status}
+                >
                   Submit
                 </button>
               </form>
