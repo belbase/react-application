@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./app";
 import Form from "./form";
 import List from "./list";
 
@@ -30,11 +29,6 @@ class Appication extends React.Component {
         <div className="row">
           <Form onSubmitData={this.getData} />
           <List />
-          {/* <App>
-            My name is {person.name} <br />
-            My Age is {person.age} years old. <br />
-            My Designation is {person.designation}
-          </App> */}
         </div>
       </div>
     );
