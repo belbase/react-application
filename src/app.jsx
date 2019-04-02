@@ -4,12 +4,13 @@ class App extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     return (
       <React.Fragment>
         <hr />
-        <div class="col-md-6 col-12">
-          <p>
+        <div className="col-md-6 col-12">
+          <p className="mt-5">
             {this.props.children ? this.props.children : "This is the passage."}
           </p>
         </div>

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Deepak Belbase",
+    "age": "23",
+    "designation": "Software Developer"
+  },
+  {
+    "name": "Atul Kumar",
+    "age": "24",
+    "designation": "Software Developer"
+  },
+  {
+    "name": "Vikas Mishra",
+    "age": "27",
+    "designation": "Android Developer"
+  },
+  {
+    "name": "Sarabjeet",
+    "age": "28",
+    "designation": "Software Developer"
+  }
+]

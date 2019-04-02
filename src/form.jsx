@@ -71,7 +71,7 @@ class Form extends React.Component {
       <React.Fragment>
         <div className="col-12 col-md-6">
           <form onSubmit={this.formSubmit.bind(this)}>
-            <div class="form-group">
+            <div className="form-group">
               <label htmlFor="name">Name</label>
               <input
                 type="text"
@@ -88,7 +88,7 @@ class Form extends React.Component {
               />
               <div className="invalid-feedback">{form.name.message}</div>
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <label htmlFor="age">Age</label>
               <input
                 type="number"
@@ -105,7 +105,7 @@ class Form extends React.Component {
               />
               <div className="invalid-feedback">{form.age.message}</div>
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <label htmlFor="designation">Designation</label>
               <input
                 type="text"

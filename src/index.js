@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./app";
 import Form from "./form";
+import List from "./list";
 
 import "./styles.css";
 
@@ -25,16 +26,15 @@ class Appication extends React.Component {
   render() {
     const { person } = this.state;
     return (
-      <div className="App">
-        <div className="container-fluid">
-          <div className="row">
-            <Form onSubmitData={this.getData} />
-            <App>
-              My name is {person.name} <br />
-              My Age is {person.age} years old. <br />
-              My Designation is {person.designation}
-            </App>
-          </div>
+      <div className="container-fluid">
+        <div className="row">
+          <Form onSubmitData={this.getData} />
+          <List />
+          {/* <App>
+            My name is {person.name} <br />
+            My Age is {person.age} years old. <br />
+            My Designation is {person.designation}
+          </App> */}
         </div>
       </div>
     );
