@@ -69,7 +69,7 @@ class Form extends React.Component {
     const { person, form } = this.state;
     return (
       <React.Fragment>
-        <div className="col-12 col-md-6">
+        <div className="col-12 col-md-6 main-body">
           <form onSubmit={this.formSubmit.bind(this)}>
             <div className="form-group">
               <label htmlFor="name">Name</label>

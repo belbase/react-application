@@ -29,13 +29,13 @@ class List extends React.Component {
   render() {
     console.dir(this.state.people);
     return (
-      <div>
+      <div className="list-troll">
         <div className="card" style={{ width: "18rem" }}>
           <div className="card-body">
             <h5 className="card-title">
               List{" "}
               <button className="btn btn-primary float-right">
-                <i classname="fa fa-plus" /> Add
+                <i className="fa fa-plus" /> Add
               </button>
             </h5>
             <p className="card-text" />

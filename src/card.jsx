@@ -11,7 +11,7 @@ class Card extends Component {
     const { data } = this.state;
     return (
       <Fragment>
-        <div className="card" style={{ width: "18rem" }}>
+        <div className="card card-h" style={{ width: "18rem" }}>
           <div className="card-body">
             <h5 className="card-title">{data.name}</h5>
             <p className="card-text">
