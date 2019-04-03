@@ -27,8 +27,8 @@ class Appication extends React.Component {
     return (
       <div className="container-fluid">
         <div className="row">
-          <Form onSubmitData={this.getData} />
           <List />
+          <Form onSubmitData={this.getData} />
         </div>
       </div>
     );

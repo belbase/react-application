@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Card from "./card";
 
 class List extends React.Component {
   constructor(props) {
@@ -29,12 +30,24 @@ class List extends React.Component {
     console.dir(this.state.people);
     return (
       <div>
-        <h3>Title</h3>
-        <ul>
-          {this.state.people.map(function(item) {
-            return <li>{item.name}</li>;
-          })}
-        </ul>
+        <div className="card" style={{ width: "18rem" }}>
+          <div className="card-body">
+            <h5 className="card-title">
+              List{" "}
+              <button className="btn btn-primary float-right">
+                <i classname="fa fa-plus" /> Add
+              </button>
+            </h5>
+            <p className="card-text" />
+          </div>
+        </div>
+        {this.state.people.map(function(item, i) {
+          try {
+            return <Card data={item} key={i} />;
+          } catch (error) {
+            console.log(error);
+          }
+        })}
       </div>
     );
   }
