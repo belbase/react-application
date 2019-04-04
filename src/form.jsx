@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 class Form extends React.Component {
   constructor(props) {
@@ -30,14 +31,24 @@ class Form extends React.Component {
 
   formSubmit(event) {
     event.preventDefault();
-    const person = this.state;
-    this.props.onSubmitData(person);
+    let { person } = this.state;
+    this.props.dispatch({
+      type: "ADD_EMPLOYEE",
+      data: person
+    });
+
+    person = {
+      name: "",
+      age: "",
+      designation: ""
+    };
+    this.setState({ person: person });
   }
 
   inputChange(event) {
     const { person } = this.state;
     person[event.target.name] = event.target.value;
-    this.setState(person);
+    this.setState({ person });
     this.formValidation(event.target.name, event.target.value);
   }
 
@@ -76,9 +87,11 @@ class Form extends React.Component {
               <input
                 type="text"
                 className={
-                  form.name.status != false
+                  form.name.status == null
                     ? "form-control"
-                    : "form-control is-invalid"
+                    : form.name.status == false
+                    ? "form-control is-invalid"
+                    : "form-control is-valid"
                 }
                 name="name"
                 id="name"
@@ -93,9 +106,11 @@ class Form extends React.Component {
               <input
                 type="number"
                 className={
-                  form.age.status != false
+                  form.age.status == null
                     ? "form-control"
-                    : "form-control is-invalid"
+                    : form.age.status == false
+                    ? "form-control is-invalid"
+                    : "form-control is-valid"
                 }
                 name="age"
                 id="age"
@@ -110,9 +125,11 @@ class Form extends React.Component {
               <input
                 type="text"
                 className={
-                  form.designation.status != false
+                  form.designation.status == null
                     ? "form-control"
-                    : "form-control is-invalid"
+                    : form.designation.status == false
+                    ? "form-control is-invalid"
+                    : "form-control is-valid"
                 }
                 name="designation"
                 id="designation"
@@ -123,7 +140,7 @@ class Form extends React.Component {
               <div className="invalid-feedback">{form.designation.message}</div>
             </div>
             <button
-              className="btn btn-primary"
+              className="btn btn-outline-success"
               type="submit"
               disabled={!form.status}
               title="Please Fill All the Field to Enable it"
@@ -137,4 +154,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default connect()(Form);

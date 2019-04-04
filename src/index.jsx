@@ -2,8 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Form from "./form";
 import List from "./list";
+import { createStore } from "redux";
+import EmployeeReducer from "./reducers/employee_reducer";
+import { Provider } from "react-redux";
 
 import "./styles.css";
+
+const store = createStore(EmployeeReducer);
 
 class Appication extends React.Component {
   constructor(props) {
@@ -19,11 +24,11 @@ class Appication extends React.Component {
   }
 
   getData(person) {
-    this.setState(person);
+    this.setState({ person: person });
   }
 
   render() {
-    const { person } = this.state;
+    // const { person } = this.state;
     return (
       <div className="container-fluid">
         <div className="row">
@@ -36,4 +41,9 @@ class Appication extends React.Component {
 }
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Appication />, rootElement);
+ReactDOM.render(
+  <Provider store={store}>
+    <Appication />
+  </Provider>,
+  rootElement
+);

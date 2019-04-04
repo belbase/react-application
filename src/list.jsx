@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Card from "./card";
+import { connect } from "react-redux";
 
 class List extends React.Component {
   constructor(props) {
@@ -13,13 +14,13 @@ class List extends React.Component {
   };
 
   fetchFromAPI = async () => {
-    let { people } = this.state;
-
     await axios
       .get("/data.json")
       .then(response => {
-        people = response.data;
-        this.setState({ people: people });
+        this.props.dispatch({
+          type: "FETCH_EMPLOYEE",
+          data: response.data
+        });
       })
       .catch(exception => {
         console.log(exception);
@@ -41,7 +42,7 @@ class List extends React.Component {
             <p className="card-text" />
           </div>
         </div>
-        {this.state.people.map(function(item, i) {
+        {this.props.people.map(function(item, i) {
           try {
             return <Card data={item} key={i} />;
           } catch (error) {
@@ -53,4 +54,10 @@ class List extends React.Component {
   }
 }
 
-export default List;
+const mapStateToProps = state => {
+  return {
+    people: state
+  };
+};
+
+export default connect(mapStateToProps)(List);
