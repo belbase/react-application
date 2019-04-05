@@ -29,7 +29,6 @@ class List extends React.Component {
   };
 
   render() {
-    // console.dir(this.state.people);
     return (
       <div className="list-troll">
         <div className="card" style={{ width: "18rem" }}>
@@ -43,9 +42,8 @@ class List extends React.Component {
             <p className="card-text" />
           </div>
         </div>
-        {this.props.people.map(function(item, i, ele = this) {
+        {this.props.people.map(function(item, i) {
           try {
-            console.log();
             return <Card data={item} key={i} />;
           } catch (error) {
             console.log(error);

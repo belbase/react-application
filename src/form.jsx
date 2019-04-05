@@ -27,9 +27,9 @@ class Form extends React.Component {
       }
     };
   }
-  componentDidMount() {}
+  componentDidMount = () => {};
 
-  formSubmit(event) {
+  formSubmit = async event => {
     event.preventDefault();
     let { person } = this.state;
     this.props.dispatch({
@@ -43,16 +43,16 @@ class Form extends React.Component {
       designation: ""
     };
     this.setState({ person: person });
-  }
+  };
 
-  inputChange(event) {
+  inputChange = async event => {
     const { person } = this.state;
     person[event.target.name] = event.target.value;
     this.setState({ person });
     this.formValidation(event.target.name, event.target.value);
-  }
+  };
 
-  formValidation(name, value) {
+  formValidation = async (name, value) => {
     const { form } = this.state;
     switch (name) {
       case "name":
@@ -75,7 +75,7 @@ class Form extends React.Component {
     form.status =
       form.name.status && form.age.status && form.designation.status;
     this.setState({ form: form });
-  }
+  };
   render() {
     const { person, form } = this.state;
     return (

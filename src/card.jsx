@@ -9,13 +9,13 @@ class Card extends Component {
     this.deleteCon = this.deleteCon.bind(this);
   }
 
-  deleteCon(event) {
-    console.log(event.target.value);
+  deleteCon = async event => {
+    event.preventDefault();
     this.props.dispatch({
       type: "DELETE_EMPLOYEE",
-      id: event.target.value
+      id: this.state.data.id
     });
-  }
+  };
 
   render() {
     const { data } = this.state;
@@ -31,8 +31,6 @@ class Card extends Component {
               <button
                 className="btn badge badge-pill badge-danger"
                 onClick={this.deleteCon}
-                name={"delete-" + data.id}
-                value={data.id}
               >
                 <i className="fa fa-times" />
               </button>

@@ -5,13 +5,9 @@ const EmployeeReducer = (state = [], action) => {
     case "FETCH_EMPLOYEE":
       return (state = action.data);
     case "DELETE_EMPLOYEE":
-      return state.filter(
-        function(post) {
-          // console.log(post, this);
-          return post.id !== this.id;
-        },
-        { id: action.id }
-      );
+      return state.filter(item => {
+        return item.id !== action.id;
+      });
     default:
       return state;
   }
