@@ -31,7 +31,7 @@ class Form extends React.Component {
 
   formSubmit = async event => {
     event.preventDefault();
-    let { person } = this.state;
+    let { person, form } = this.state;
     this.props.dispatch({
       type: "ADD_EMPLOYEE",
       data: person
@@ -42,7 +42,25 @@ class Form extends React.Component {
       age: "",
       designation: ""
     };
-    this.setState({ person: person });
+    form = {
+      name: {
+        status: null,
+        message: ""
+      },
+      age: {
+        status: null,
+        message: ""
+      },
+      designation: {
+        status: null,
+        message: ""
+      },
+      status: false
+    };
+    this.setState({
+      person: person,
+      form: form
+    });
   };
 
   inputChange = async event => {
